@@ -1,0 +1,134 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
+/**
+ * Admin Login (backend)
+ */
+Route::get('admin/login', 'Auth\AuthController@getadmin');
+Route::post('admin/login', 'Auth\AuthController@postadmin');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+
+	Route::get('admin/dashboard', function () {
+	    return view('welcome');
+	});
+
+	/*
+	 * Specific to Admin Logout
+	 */
+	Route::get('admin/logout', 'Auth\AuthController@AdminLogout');
+
+	/**
+	 * Routes that are related to create groups 
+	 */
+	Route::get('admin/groups/create', 'GroupController@create');
+	Route::post('admin/groups/create', 'GroupController@store');
+
+	/**
+	 * Routes that are related to list groups 
+	 */
+	Route::get('admin/groups', 'GroupController@index');
+	Route::post('admin/groups', 'GroupController@operations');
+
+	/**
+	 * Routes that are related to opertions to edit or delete groups 
+	 */
+	Route::get('admin/groups/{id}/edit', 'GroupController@edit');
+	Route::post('admin/groups/{id}/edit', 'GroupController@update');
+
+	Route::get('admin/groups/{id}/delete', 'GroupController@show');
+	Route::post('admin/groups/{id}/delete', 'GroupController@destroy');
+	Route::get('admin/groups/all/{string}/delete', 'GroupController@show_all');
+	Route::post('admin/groups/all/{string}/delete', 'GroupController@destroy_all');
+
+	/**
+	 * Routes that are related to create Admins 
+	 */
+	Route::get('admin/admins/create', 'Auth\AuthController@createadmins');
+	Route::post('admin/admins/create', 'Auth\AuthController@storeadmins');
+
+	/**
+	 * list all admins
+	 */
+	Route::get('admin/admins', 'AdminsController@index');
+	Route::post('admin/admins', 'AdminsController@operations');
+
+	Route::get('admin/admins/{id}/edit', 'AdminsController@edit');
+	Route::post('admin/admins/{id}/edit', 'AdminsController@update');
+
+	Route::get('admin/admins/{id}/delete', 'AdminsController@show');
+	Route::post('admin/admins/{id}/delete', 'AdminsController@destroy');
+
+	Route::get('admin/admins/all/{string}/delete', 'AdminsController@show_all');
+	Route::post('admin/admins/all/{string}/delete', 'AdminsController@destroy_all');
+
+	/*
+	 * Edit Admin Information
+	 */
+	Route::get('admin/profile', 'AdminsController@edit_profile');
+	Route::post('admin/profile', 'AdminsController@update_profile');
+
+
+	/**
+	 * Routes that are related to create sections 
+	 */
+	Route::get('admin/sections/create', 'SectionController@create');
+	Route::post('admin/sections/create', 'SectionController@store');
+
+	/**
+	 * Routes that are related to list sections 
+	 */
+	Route::get('admin/sections', 'SectionController@index');
+	Route::post('admin/sections', 'SectionController@operations');
+
+	/**
+	 * Routes that are related to opertions to edit or delete sections 
+	 */
+	Route::get('admin/sections/{id}/edit', 'SectionController@edit');
+	Route::post('admin/sections/{id}/edit', 'SectionController@update');
+
+	Route::get('admin/sections/{id}/delete', 'SectionController@show');
+	Route::post('admin/sections/{id}/delete', 'SectionController@destroy');
+	Route::get('admin/sections/all/{string}/delete', 'SectionController@show_all');
+	Route::post('admin/sections/all/{string}/delete', 'SectionController@destroy_all');
+
+	/**
+	 * Routes that are related to create News 
+	 */
+	Route::get('admin/news/create', 'NewsController@create');
+	Route::post('admin/news/create', 'NewsController@store');
+
+	/**
+	 * Routes that are related to list news 
+	 */
+	Route::get('admin/news', 'NewsController@index');
+	Route::post('admin/news', 'NewsController@operations');
+
+	/**
+	 * Routes that are related to opertions to edit or delete news 
+	 */
+	Route::get('admin/news/{id}/edit', 'NewsController@edit');
+	Route::post('admin/news/{id}/edit', 'NewsController@update');
+
+	Route::get('admin/news/{id}/delete', 'NewsController@show');
+	Route::post('admin/news/{id}/delete', 'NewsController@destroy');
+	Route::get('admin/news/all/{string}/delete', 'NewsController@show_all');
+	Route::post('admin/news/all/{string}/delete', 'NewsController@destroy_all');
+
+	Route::get('admin/news/tags', 'NewsController@tags');
+});

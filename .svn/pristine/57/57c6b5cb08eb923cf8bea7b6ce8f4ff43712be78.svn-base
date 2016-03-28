@@ -1,0 +1,48 @@
+<?php $settings = app('App\Http\Controllers\HomeController'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="<?php echo e($settings->getsettings()->description); ?>">
+<?php
+	$keywords_str = '';
+	$keywords = $settings->getsettings()->keywords;
+	$keywords = explode(' ', $keywords);
+	foreach ($keywords as $key => $value) {
+		$keywords_str .= $value . ',';
+	}
+
+	$url = $_SERVER['REQUEST_URI'];
+	$tokens = explode('/', $url);
+	$news = $tokens[1];
+?>
+<?php if($news != 'story'): ?>
+	<meta name="keywords" content="<?php echo e($keywords_str); ?>">
+<?php else: ?>
+	<?php echo $__env->yieldContent('meta_keywords'); ?>
+<?php endif; ?>
+<meta name="author" content="INNOFLAME INFORMATION TECHNOLOGY">
+
+<title><?php echo e($settings->getsettings()->name); ?></title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/<?php echo e($settings->getsettings()->favicon); ?>" type="image/x-icon">
+    <?php if(Lang::getLocale() == 'ar'): ?>
+        <link href="<?php echo e(asset('assets/frontend/css/custom-rtl.css')); ?>" rel="stylesheet" type="text/css" id="colorscheme" />
+    <?php endif; ?>
+<?php echo $__env->yieldContent('header-content'); ?>
+</head>
+<body>
+
+
+<!-- wrapper start -->
+<div class="wrapper"> 
+<?php echo $__env->make('frontend.regions.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('content'); ?>
+</div>
+<?php echo $__env->make('frontend.regions.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('footer-scripts'); ?>
+</body>
+</html>

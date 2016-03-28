@@ -1,0 +1,19 @@
+			@extends('backend.master')
+            @section('content-header')
+                <!--section starts-->
+                <h1>لوحة التحكم</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/admin/dashboard">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="active">لوحة التحكم</li>
+                </ol>
+            @endsection
+            <!--section ends-->
+            @section('content')
+                <h1 style="text-align: center;color: rgb(120, 145, 155);">Under Development</h1>
+            @endsection
+            @stop

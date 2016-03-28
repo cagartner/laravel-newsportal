@@ -1,0 +1,254 @@
+<?php $permissions = app('App\Http\Controllers\GroupController'); ?>
+<?php if($permissions->get()->count()): ?>
+    <?php foreach($permissions->get() as $view): ?>
+        <?php if($view->status == 1 && $view->permission == 10): ?> 
+			
+            <?php $__env->startSection('content-header'); ?>
+                <!--section starts-->
+                <h1>قائمة الاعلانات</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/admin/dashboard">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="active">الاعلانات</li>
+                </ol>
+            <?php $__env->stopSection(); ?>
+            <!--section ends-->
+            <?php $__env->startSection('content'); ?>
+            	<div class="row">
+				    <div class="col-md-12">
+				        <div class="panel panel-success" id="hidepanel1">
+				                <div class="panel-heading">
+				                    <h3 class="panel-title">
+				                    <i class="fa fa-fw fa-filter"></i>
+				                        بحث الاعلانات
+				                    </h3>
+				                    <span class="pull-right">
+				                        <i class="glyphicon glyphicon-chevron-up clickable"></i>
+				                        <i class="glyphicon glyphicon-remove removepanel clickable"></i>
+				                    </span>
+				                </div>
+				                <div class="panel-body">
+					                <?php echo Form::open(array('method' => 'post', 'class' => 'form-inline')); ?>
+
+						            
+					            		<div class="form-group">
+					                        <label class="control-label">
+					                            عنوان الاعلان
+					                        </label>
+					                        <input name="title" type="text" class="form-control" style="width: 450px !important;" <?php if(!empty($_GET['title'])): ?>  value="<?php echo e($_GET['title']); ?>" <?php endif; ?>>
+					                    </div>
+					                    <div class="form-group">
+					                        <label class="control-label">
+					                            حالة التفعيل
+					                        </label>
+					                        <select name="status" id="select2_sample4" class="form-control select2" style="width: 250px;">
+					                        <option value="">
+						                        --اختر--
+						                    </option>
+						                    <?php if(!empty($_GET['status'])): ?>
+						                        		<?php if($_GET['status'] == 1): ?>
+							                            <option value="1" selected>
+							                                مفعل
+							                            </option>
+							                            <option value="2">
+							                                غير مفعل
+							                            </option>
+							                        	<?php else: ?>
+							                        	<option value="1">
+							                                منشور
+							                            </option>
+							                            <option value="2" selected>
+							                                غير مفعل
+							                            </option>
+							                           	<?php endif; ?>
+							                        <?php else: ?>
+							                        	<option value="1">
+							                                مفعل
+							                            </option>
+							                            <option value="2">
+							                                غير مفعل
+							                            </option>
+							                        <?php endif; ?>
+					                        </select>
+					                    </div>
+					                    <?php if(!empty($_GET['created_at'])): ?>
+					                    <div class="form-group" style="margin-top:10px;display:none;">
+					                    	<label class="control-label">
+					                            تاريخ البدأ
+					                        </label>
+					                        <input type="text" name="start" class="form-control" id="created_at" value="<?php echo e($_GET['start']); ?>" style="width: 170px;">
+					                    </div>
+					                    <?php else: ?>
+					                    <div class="form-group" style="margin-top:10px;display:none;">
+					                    	<label class="control-label">
+					                            تاريخ البدأ
+					                        </label>
+					                        <input type="text" name="start" class="form-control" id="created_at" style="width: 170px;">
+					                    </div>
+					                    <?php endif; ?>
+					                    <div class="form-group" style="margin-top:10px;">
+					                        <input type="submit" name="search" value="بحث" class="button button-pill button-flat">
+					                    </div>
+	                			</div>
+	                	</div>
+	                </div>
+	            </div>
+				<div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary filterable">
+                            <div class="panel-heading clearfix  ">
+                                <div class="panel-title pull-left">
+                                    <div class="caption">
+                                    	<i class="livicon" data-name="camera-alt" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    	استعراض الاعلانات
+                                	</div>
+                                    
+                                </div>
+                                <div class="tools pull-right"></div>
+
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-responsive" id="table1">
+                                	<?php if($adv->count()): ?>
+	                                    <thead>
+	                                        <tr>
+	                                        	<th>
+                                                    <input type="checkbox" name="check_all" id="checkall" style="float:right;">
+                                                </th>
+                                                <th>الكود</th>
+                                                <th>عنوان الاعلان</th>
+	                                            <th>الموقع</th>
+	                                            <th>تاريخ البدأ</th>
+	                                            <th>تاريخ الانتهاء</th>
+	                                            <th>انشئ بواسطة</th>
+	                                            <th>الحالة</th> 
+	                                            <th>تاريخ الانشاء</th>
+	                                            <th>تاريخ اخر تحديث</th>
+	                                            <th>حالة التجديد</th>
+	                                            <th>
+	                                                العمليات
+	                                            </th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+                                    	<?php foreach($adv as $view): ?>
+	                                        <tr>
+	                                        	<td>
+                                                    <input type="checkbox" name="check_list[<?php echo e($view->id); ?>]" class="check_list" value="<?php echo e($view->id); ?>">
+                                                </td>
+                                                <td><?php echo e($view->id); ?></td>
+                                                <td><?php echo e($view->title); ?></td>
+                                                <td>
+                                                <?php if($view->position == 1): ?>
+                                                	<p style="color:#337AB7;">اعلى الرئيسية</p>
+                                                <?php elseif($view->position == 2): ?>
+                                                	<p style="color:rgb(186, 47, 47);">العمود الايسر</p>
+                                                <?php elseif($view->position == 3): ?>
+                                                	<p style="color:#01BC8C;">اسفل الرئيسية</p>
+                                                <?php endif; ?>
+                                                </td>
+                                                <td><?php echo e($view->start); ?></td>
+                                                <td><?php echo e($view->end); ?></td>
+                                                <td>
+                                                <?php foreach($users as $user): ?>
+                                                	<?php if($user->id == $view->user_id): ?>
+                                                		<?php echo e($user->name); ?>
+
+                                                	<?php endif; ?>
+                                                <?php endforeach; ?>
+                                                </td>
+                                                <td>
+                                                	<?php if($view->status == 1): ?>
+                                                		<span class="label label-sm label-success">مفعل</span>
+                                                	<?php else: ?>
+                                                		<span class="label label-sm label-warning">غير مفعل</span>
+                                                	<?php endif; ?>
+                                                </td>
+                                                <td>
+	                                               <?php echo e($view->created_at); ?>
+
+                                                </td>
+                                                <td>
+	                                               <?php echo e($view->updated_at); ?>
+
+                                                </td>
+                                                <td>
+	                                               <?php if($view->renewal == 1): ?>
+                                                		<span class="label label-sm label-success">مجدد</span>
+                                                	<?php else: ?>
+                                                		<span class="label label-sm label-warning">الاصل</span>
+                                                	<?php endif; ?>
+                                                </td>
+	                                            <td>
+		                                            <?php if($today > $view->end): ?>
+		                                            	<a href="/admin/advertisements/<?php echo e($view->id); ?>/renew"><i class="fa fa-fw fa-plus-circle"></i>تجديد</a><br> 
+		                                            <?php endif; ?>
+	                                                <a href="/admin/advertisements/<?php echo e($view->id); ?>/edit"><i class="fa fa-fw fa-edit"></i>تعديل</a><br> 
+	                                                <a href="/admin/advertisements/<?php echo e($view->id); ?>/delete"><i class="fa fa-trash-o"></i>حذف</a>
+	                                            </td>
+	                                        </tr>
+	                                    <?php endforeach; ?>
+	                                <?php endif; ?>
+	                                <?php if(!($adv->count())): ?>
+	                                	<div class="text-center"><h1>عفوا لا يوجد نتائج</h1> </div>
+	                                <?php endif; ?>
+                                    </tbody>
+                                </table>
+                                <?php if($adv->count()): ?>
+		                            <div class="form-group">
+		                                <input type="submit" name="delete" value="مسح" class="btn btn-primary">
+		                            </div>
+		                        <?php endif; ?>
+                                <div> <i class="fa fa-folder-o"></i> إجمالي : <?php echo e($adv->count()); ?> اعلان </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
+                <?php echo Form::close(); ?>
+
+                <div class="row">
+	                <div class="col-md-12">
+	                    <div class="product-pagination text-center">
+	                        <nav>
+	                            <ul class="pagination">
+	                                <?php echo $adv->render(); ?>
+
+	                            </ul>
+	                        </nav>                        
+	                    </div>
+	                </div>
+	            </div>
+	            <?php endif; ?>
+                        <?php if($view->status == 2 && $view->permission == 10): ?>
+            <?php $__env->startSection('content'); ?>
+                <p style="margin-right: 380px;font-size: large;color: rgb(224, 109, 109);"><i class="fa fa-fw fa-minus-square"></i>غير مسموح لك بالدخول لهذه الصفحة</p>
+            <?php $__env->stopSection(); ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+   				<?php $__env->stopSection(); ?>
+   				<?php $__env->startSection('header_styles'); ?>
+   					<link rel="stylesheet" href="<?php echo e(asset('assets/backend/vendors/Buttons-master/css/buttons.css')); ?>" />
+					<link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/pages/advbuttons.css')); ?>" />
+   				<?php $__env->stopSection(); ?>
+   				<?php $__env->startSection('footer_scripts'); ?>
+                	<script>
+						    $('#checkall').change(function(event) {
+						        if(this.checked) {
+						            $('.check_list').each(function() {
+						                this.checked = true;
+						            });
+						        }
+						        else{
+						            $('.check_list').each(function() {
+						                this.checked = false;
+						            });        
+						        }
+						    });
+					</script>   
+   				<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

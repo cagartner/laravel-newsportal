@@ -1,0 +1,95 @@
+body{
+	direction: rtl !important;
+}
+@media(min-width: 992px){
+	.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md-13, .col-md-14, .col-md-15, .col-md-16 {
+    float: right !important;
+	}
+}
+@media(min-width: 1200px){
+	.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-13, .col-lg-14, .col-lg-15, .col-lg-16 {
+    float: right !important;
+	}
+}
+@media(min-width: 768px){
+	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-13, .col-sm-14, .col-sm-15, .col-sm-16 {
+    float: right !important;
+	}
+}
+@media (min-width: 768px){
+	.navbar-nav>li {
+	float: right !important;
+	}
+	.navbar-nav {
+	float: right !important;
+	}
+}
+.navbar-brand {
+float: right !important;
+}
+/*menu*/
+.navbar-inverse .navbar-nav li:first-child a {
+padding-right: none !important;
+padding-left: none !important;
+}
+.navbar-inverse .navbar-nav li a, .navbar-inverse .navbar-nav li a:hover, .navbar-inverse .navbar-nav li a:focus {
+border-left: 1px solid #44617d !important;
+border-right: none !important;
+}
+.navbar-inverse .navbar-nav li:first-child a {
+padding-right: 15px !important;
+padding-left: 15px !important;
+}
+/*end menu*/
+
+.owl-carousel {
+    direction: ltr !important;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+    text-align: right !important;
+}
+.main-title {
+    border-right: 2px solid rgb(231, 76, 60) !important;
+	border-left: none !important;
+    float: right !important;
+}
+.banner-outer .carousel-caption {
+    text-align: right !important;
+}
+#scrollUp {
+    right: auto !important;
+    left: 20px !important;
+}
+.list-unstyled, .nav {
+padding-right: 0 !important;
+}
+.pull-it-left, .breadcrumb {
+    float: left !important;
+}
+.pull-left, ul.tags.list-unstyled.pull-left{
+    float: right !important;
+}
+.tags li, h1 {
+    float: right !important;
+}
+
+#weather {
+text-align: left !important;
+}
+
+.text-right {
+text-align: left !important;
+}
+
+span.ion-ios7-timer.icon-news.pull-left{
+	float: right !important;
+}
+
+ul.list-inline{
+	padding-right: 0px !important;
+}
+
+.subscribe-info {
+    border-right: none !important;
+    padding-right: 0px !important;
+}

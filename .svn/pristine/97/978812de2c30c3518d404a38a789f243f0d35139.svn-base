@@ -1,0 +1,60 @@
+            
+            <?php $__env->startSection('content-header'); ?>
+                <!--section starts-->
+                <h1>اضافة مجموعة جديدة</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/admin/dashboard">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/groups">المجموعات</a>
+                    </li>
+                    <li class="active">تعديل المجموعة</li>
+                </ol>
+            <?php $__env->stopSection(); ?>
+            <!--section ends-->
+            <?php $__env->startSection('content'); ?>
+                <!--main content-->
+<div class="row">
+    <div class="col-md-12">
+         <div class="panel panel-primary" id="hidepanel1">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    تعديل المجموعة <?php echo e($group->name); ?>
+
+                                </h3>
+                            </div>
+                <div class="panel-body">
+                    <?php echo Form::model($group, [$group->id, 'method' => 'POST']); ?>
+
+                        <div class="form-group">
+                            <label>الاسم</label><br>
+                            <?php echo Form::text('name', null, 
+                              array('class'=>'form-control')); ?>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>الوصف</label><br>
+                            <?php echo Form::text('description', null, 
+                              array('class'=>'form-control')); ?>
+
+                        </div>
+
+                        <div class="form-group">
+                            <?php echo Form::submit('تعديل', 
+                              array('class'=>'btn btn-primary')); ?>
+
+                        </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

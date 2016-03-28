@@ -1,0 +1,55 @@
+            <?php $__env->startSection('content-header'); ?>
+                <!--section starts-->
+                <h1>حذف المجموعات</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/admin/dashboard">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/groups">
+                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                            المجموعات
+                        </a>
+                    </li>
+                    <li class="active">حذف المجموعات</li>
+                </ol>
+            <?php $__env->stopSection(); ?>
+            <!--section ends-->
+<?php $__env->startSection('content'); ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary" id="hidepanel1">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="livicon" data-name="clock" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        تأكيد حذف المجموعة <?php echo e($group->name); ?>
+
+                    </h3>
+                    <span class="pull-right">
+                        <i class="glyphicon glyphicon-chevron-up clickable"></i>
+                        <i class="glyphicon glyphicon-remove removepanel clickable"></i>
+                    </span>
+                </div>
+                <div class="panel-body">
+                <p style="color: rgb(224, 109, 109);"><i class="fa fa-fw fa-bell"></i> تحذير: سيتم حذف جميع الاعضاء التابعين لهذه المجموعة مع حذف المجموعة</p>
+                    <?php echo Form::open(array('method' => 'post')); ?>
+
+                    <div class="form-group" style="float: right;">
+                        <?php echo Form::submit('حذف', 
+                          array('class'=>'btn btn-primary')); ?>
+
+                    </div>
+                    <div class="form-group">
+                        <a href="/admin/groups" style="margin-right: 10px;font-size: 24px;">الغاء</a>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

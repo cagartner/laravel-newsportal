@@ -1,0 +1,412 @@
+<?php $permissions = app('App\Http\Controllers\GroupController'); ?>
+<?php if($permissions->get()->count()): ?>
+    <?php foreach($permissions->get() as $view): ?>
+        <?php if($view->status == 1 && $view->permission == 1): ?>
+
+
+			
+<?php $__env->startSection('content-header'); ?>
+<!-- Main content -->
+<h1>لوحة التحكم</h1>
+<ol class="breadcrumb">
+    <li>
+        <a href="/admin/dashboard">
+            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+            الرئيسية
+        </a>
+    </li>
+    <li class="active" style="margin-top: -3px;">
+        لوحة التحكم
+    </li>
+</ol>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+<div class="row">
+                    <a href="/admin/sections">
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInLeftBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="lightbluebg no-radius">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7"  style="float:right;">
+                                            <span>الاقسام</span><br>
+                                            <div style="font-size: 30px;"> <?php echo e($sections->count()); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="eye-open" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الاقسام المفعلة</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($sections_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">الاقسام الغير المفعلة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                <?php echo e($sections->count() - $sections_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="/admin/news">
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInUpBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="redbg no-radius">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>الاخبار</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($news->count()); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="piggybank" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الاخبار غبر المفعلة</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($news->count()  - $news_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">الاخبار المفعلة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                <?php echo e($news_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="/admin/advertisements">
+                    <div class="col-lg-3 col-sm-6 col-md-6 margin_10 animated fadeInDownBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="goldbg no-radius">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>الاعلانات</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($advs->count()); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="archive-add" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الاعلانات المفعلة</small>
+                                            <h4 id="myTargetElement3.1">
+                                            <?php echo e($advs_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الاعلانات الغير المفعلة</small>
+                                            <h4 id="myTargetElement3.1">
+                                            <?php echo e($advs->count() - $advs_act->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="/admin/groups">
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInRightBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="palebluecolorbg no-radius">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>عدد المجموعات</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($groups->count()); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="users" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">المجموعات المفعلة</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($groups->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">المجموعات الغير المفعلة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                <?php echo e($groups->count() - $groups->count()); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+        </div>
+
+        <div class="row">
+                    <a href="/admin/admins">
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInLeftBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="lightbluebg no-radius" style="background-color:#526E86;">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7"  style="float:right;">
+                                            <span>الاعضاء</span><br>
+                                            <div style="font-size: 30px;"> <?php echo e($users); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="eye-open" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الاعضاء المفعلة</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($users_act); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">الاعضاء الغير المفعلة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                <?php echo e($users - $users_act); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInUpBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="redbg no-radius"  style="background:#9F4947;">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>الرسائل</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($messages); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="piggybank" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">عدد الرسائل اليومية</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($messages  - $old_messages); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">عدد الرسائل السابقة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                <?php echo e($old_messages); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/opinions">
+                    <div class="col-lg-3 col-sm-6 col-md-6 margin_10 animated fadeInDownBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="goldbg no-radius" style="background:#B6843E;">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>استطلاعات الرأي</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($opinion); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="archive-add" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">استطلاعات الرأي الاكثر زيارة</small>
+                                            <h4 id="myTargetElement3.1">
+                                            <?php echo e($opinion); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">استطلاعات الرأي الاخرى</small>
+                                            <h4 id="myTargetElement3.1">
+                                            <?php echo e($opinion - 2); ?>
+
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="/admin/pages">
+                    <div class="col-lg-3 col-md-6 col-sm-6 margin_10 animated fadeInRightBig">
+                        <!-- Trans label pie charts strats here-->
+                        <div class="palebluecolorbg no-radius" style="background:#3E9680;">
+                            <div class="panel-body squarebox square_boxs">
+                                <div class="col-xs-12 nopadmar" style="float:right;">
+                                    <div class="row">
+                                        <div class="square_box col-xs-7" style="float:right;">
+                                            <span>عدد الصفحات</span><br>
+                                            <div style="font-size: 30px;"><?php echo e($pages); ?></div>
+                                        </div>
+                                        <i class="livicon" data-name="users" data-l="true" data-c="#fff" data-hc="#fff" data-s="70"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <small class="stat-label">الصفحات المفعلة</small>
+                                            <h4 id="myTargetElement1.1">
+                                                <?php echo e($pages); ?>
+
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-6 text-right">
+                                            <small class="stat-label">الصفحات الغير المفعلة</small>
+                                            <h4 id="myTargetElement1.2">
+                                                0
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+        </div>
+
+        <div class="row">
+        <div class="col-md-12">
+                        <div class="panel panel-primary todolist">
+                            <div class="panel-heading border-light">
+                                <h4 class="panel-title">
+                                    <i class="livicon" data-name="medal" data-size="18" data-color="white" data-hc="white" data-l="true"></i>
+                                    الاخبار الاكثر زيارة
+                                </h4>
+                            </div>
+                            <div class="panel-body nopadmar">
+                            <div class="todolist_list showactions">
+                                        <div class="col-md-8" style="padding-right:10px;">
+                                            <div class="todotext todoitem">الاخبار الاكثر زيارة</div>
+                                        </div>
+                                        <div class="col-md-4" style="padding-right:10px;">
+                                            <div class="todotext todoitem">الاقسام التابع لها الخبر</div>
+                                        </div>
+                             </div>
+                            <?php foreach($news_most_views as $item): ?>
+                                    <div class="todolist_list showactions">
+                                        <div class="col-md-8" style="padding-right:10px;">
+                                            <a href="/admin/news/<?php echo e($item->id); ?>/edit"><div class="todotext todoitem"><?php echo e($item->title); ?></div></a>
+                                        </div>
+                                        <div class="col-md-4" style="padding-right:10px;">
+                                        <?php foreach($item->sections as $mysection): ?>
+                                            <?php foreach($sections as $sec): ?>
+                                                <?php if($sec->id == $mysection->section): ?>
+                                                    <?php if($mysection->status == 1): ?>
+                                                        <a href="/admin/sections/<?php echo e($sec->id); ?>/edit"><div class="todotext todoitem"> - <?php echo e($sec->name); ?> </div></a> 
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                            <?php endforeach; ?>
+                            
+                            </div>
+                        </div>
+                        <div> <i class="fa fa-folder-o"></i> إجمالي : <?php echo e($news_most_views->count()); ?> خبر</div>
+                    </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-12">
+                        <div class="panel panel-primary todolist">
+                            <div class="panel-heading border-light">
+                                <h4 class="panel-title">
+                                    <i class="livicon" data-name="medal" data-size="18" data-color="white" data-hc="white" data-l="true"></i>
+                                    الاقسام
+                                </h4>
+                            </div>
+                            <div class="panel-body nopadmar">
+                            <div class="todolist_list showactions">
+                                        <div class="col-md-8" style="padding-right:10px;">
+                                            <div class="todotext todoitem">الاقسام</div>
+                                        </div>
+                                        <div class="col-md-4" style="padding-right:10px;">
+                                            <div class="todotext todoitem">عدد الاخبار الخبر</div>
+                                        </div>
+                             </div>
+                            <?php foreach($sections as $item): ?>
+                                    <div class="todolist_list showactions">
+                                        <div class="col-md-8" style="padding-right:10px;">
+                                            <a href="/admin/sections/<?php echo e($item->id); ?>/edit"><div class="todotext todoitem"><?php echo e($item->name); ?></div></a>
+                                        </div>
+                                        <div class="col-md-4" style="padding-right:10px;">
+                                        
+                                        
+                                            
+                                                <?php foreach($count_news as $mynews_sec): ?>
+                                                <?php if($item->id == $mynews_sec->section): ?>
+                                                
+                                                        <a href="#"><div class="todotext todoitem"> <?php echo e($mynews_sec->count_sec_news); ?> </div></a> 
+                                                <?php endif; ?>
+                                                
+                                            <?php endforeach; ?>
+                                            
+                                        
+                                        </div>
+                                    </div>
+                            <?php endforeach; ?>
+                            
+                            </div>
+                        </div>
+                        <div> <i class="fa fa-folder-o"></i> إجمالي : <?php echo e($news->count()); ?> خبر - إجمالي : <?php echo e($sections->count()); ?> قسم</div>
+                    </div>
+        </div>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('header_styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/backend/css/only_dashboard.css')); ?>" />
+<style type="text/css">
+    .todoitem {
+        float: right !important;
+    }
+</style>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+        <?php else: ?>
+            <?php $__env->startSection('content'); ?>
+                <p style="margin-right: 380px;font-size: large;color: rgb(224, 109, 109);"><i class="fa fa-fw fa-minus-square"></i>غير مسموح لك بالدخول لهذه الصفحة</p>
+            <?php $__env->stopSection(); ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>    
+
+
+
+
+
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

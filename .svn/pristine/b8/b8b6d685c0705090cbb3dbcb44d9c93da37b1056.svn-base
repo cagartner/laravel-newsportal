@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>بوابة الاخبار</title>
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<?php echo $__env->yieldContent('header-content'); ?>
+</head>
+<body>
+<!-- preloader start -->
+<div id="preloader">
+  <div id="status"></div>
+</div>
+<!-- preloader end --> 
+
+<!-- wrapper start -->
+<div class="wrapper"> 
+<?php echo $__env->make('frontend.regions.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('content'); ?>
+</div>
+<?php echo $__env->make('frontend.regions.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('footer-scripts'); ?>
+</body>
+</html>

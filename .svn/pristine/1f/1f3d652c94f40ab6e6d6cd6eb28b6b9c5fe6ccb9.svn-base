@@ -1,0 +1,599 @@
+<?php $__env->startSection('header-content'); ?>
+
+<!-- bootstrap styles-->
+<link href="<?php echo e(asset('assets/frontend/css/bootstrap.min.css')); ?>" rel="stylesheet">
+<!-- google font -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+<!-- ionicons font -->
+<link href="<?php echo e(asset('assets/frontend/css/ionicons.min.css')); ?>" rel="stylesheet">
+<!-- animation styles -->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/animate.css')); ?>" />
+<!-- custom styles -->
+<link href="<?php echo e(asset('assets/frontend/css/custom-red.css')); ?>" rel="stylesheet" id="style">
+<!-- owl carousel styles-->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/owl.carousel.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/owl.transitions.css')); ?>">
+<!-- magnific popup styles -->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/magnific-popup.css')); ?>">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+  <div class="container">
+    <div class="row"> 
+      <!-- hot news start -->
+      <div class="col-sm-16 hot-news hidden-xs">
+        <div class="row">
+          <div class="col-sm-15"> <span class="ion-ios7-timer icon-news pull-left"></span>
+            <ul id="js-news" class="js-hidden">
+            <?php if($news_load->count()): ?>
+            <?php foreach($news_load as $item): ?>
+            <?php foreach($item->features as $feature): ?>
+            <?php if($feature->feature == 3 && $feature->status == 1): ?>
+            <?php
+              $date = $item->created_at;
+              $date = date('Y-m-d', strtotime($date));
+            ?>
+              <li class="news-item"><a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>"><?php echo e($item->title); ?></a></li>
+              <?php break; ?>
+            <?php endif; ?>
+
+            <?php endforeach; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- hot news end --> 
+      <!-- banner outer start -->
+      <div  class="col-sm-16 banner-outer wow fadeInLeft animated" data-wow-delay="1s" data-wow-offset="50">
+        <div class="row">
+          <div class="col-sm-16 col-md-10 col-lg-8"> 
+            
+            <!-- carousel start -->
+            <div id="sync1" class="owl-carousel">
+            <?php if($last_news->count()): ?>
+            <?php foreach($last_news as $view): ?>
+            <?php if($view->advantage == 0): ?>
+              <?php
+                $date = $item->created_at;
+                $date = date('Y-m-d', strtotime($date));
+              ?>
+              <div class="box item"> <a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>">
+                <div class="carousel-caption"><?php echo e($view->title); ?></div>
+                <?php foreach($view->basic_photo as $image): ?>
+                <img class="img-responsive" src="/<?php echo e($image->large); ?>" width="1600" height="972" alt="<?php echo e($view->title); ?>"/>
+                <?php endforeach; ?>
+                <div class="overlay"></div>
+                <div class="overlay-info">
+                  <div class="cat">
+                  <?php if($view->sections->count()): ?>
+                  <?php foreach($view->sections as $sec): ?>
+                  <?php if($sections->count()): ?>
+                    <?php foreach($sections as $section): ?>
+                    <?php if($section->id == $sec->section && $sec->status == 1): ?>
+                    <?php
+                      $path = str_replace(' ', '-', $section->name);
+                    ?>
+                    <a href="/section/<?php echo e($path); ?>"></a><p class="cat-data"><span class=""></span><?php echo e($section->name); ?></p>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                  <?php endif; ?>
+                  </div>
+                  <div class="info">
+                    <p><span class="ion-android-data"></span><?php echo e($view->created_at); ?><span class="ion-chatbubbles"></span><?php echo e($view->views); ?></p>
+                  </div>
+                </div>
+                </a></div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <div class="row">
+              <div id="sync2" class="owl-carousel">
+              <?php if($last_news->count()): ?>
+                <?php foreach($last_news as $view): ?>
+                <?php if($view->advantage == 0): ?>
+                  <?php foreach($view->basic_photo as $image): ?>
+                    <div class="item"><img class=" img-responsive" src="/<?php echo e($image->large); ?>"  width="1600" height="972" alt=""/></div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
+              <?php endif; ?>
+             </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-8 hidden-sm hidden-xs">
+            <div class="row">
+            <?php if($news_load->count()): ?>
+            <?php $i = 1; ?>
+            <?php foreach($news_load as $item): ?>
+            <?php foreach($item->features as $feature): ?>
+            <?php if($feature->feature == 4 && $feature->status == 1): ?>
+              <?php
+                $date = $item->created_at;
+                $date = date('Y-m-d', strtotime($date));
+              ?>
+              <div class="col-lg-6 hidden-md"><a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>">
+                <div class="box">
+                  <div class=" carousel-caption"><?php echo e($item->title); ?></div>
+                  <?php foreach($item->basic_photo as $image): ?>
+                  <img class="match-height" src="/<?php echo e($image->large); ?>" width="236" height="480"  alt="<?php echo e($item->title); ?>" />
+                  <?php endforeach; ?>
+                  <div class="overlay"></div>
+                  <div class="overlay-info">
+                    <div class="cat">
+                      <a href="/features/الاحداث-الهامة"><p class="cat-data"><span class=""></span>الاحداث الهامة</p></a>
+                    </div>
+                    <div class="info">
+                      <p><span class="ion-android-data"></span><?php echo e($view->created_at); ?><span class="ion-chatbubbles"></span><?php echo e($view->views); ?></p>
+                    </div>
+                  </div>
+                </div>
+                </a> </div>
+                <?php $i = $i + 1;?>
+                
+                 <?php endif; ?>
+                 <?php  if ($i > 1){ break; } ?>
+            <?php endforeach; ?>
+
+                
+            <?php endforeach; ?>
+            <?php endif; ?>
+              <div class="col-md-16 col-lg-10">
+                <div class="row">
+                <?php if($news_load->count()): ?>
+                <?php $i = 1; ?>
+                <?php foreach($news_load as $item): ?>
+                <?php foreach($item->features as $feature): ?>
+                <?php if($feature->feature == 2 && $feature->status == 1): ?>
+                  <?php
+                    $date = $item->created_at;
+                    $date = date('Y-m-d', strtotime($date));
+                  ?>
+                  <div class="col-sm-16 right-img-top "> <a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>">
+                    <div class="box">
+                      <div class="carousel-caption"><?php echo e($item->title); ?></div>
+                      <?php foreach($item->basic_photo as $image): ?>
+                      <img class="img-responsive" src="/<?php echo e($image->medium); ?>" width="440" height="292" alt="<?php echo e($item->title); ?>"/>
+                      <?php endforeach; ?>
+                      <div class="overlay"></div>
+                      <div class="overlay-info">
+                        <div class="cat">
+                          <a href="/features/عاجل"><p class="cat-data"><span class=""></span>عاجل</p></a>
+                        </div>
+                        <div class="info">
+                          <p><span class="ion-android-data"></span><?php echo e($item->created_at); ?><span class="ion-chatbubbles"></span><?php echo e($item->views); ?></p>
+                        </div>
+                      </div>
+                    </div>
+                    </a> </div>
+                    <?php $i = $i + 1;?>
+                    <?php endif; ?>
+
+                    <?php endforeach; ?>
+                    <?php  if ($i > 2){ break; } ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- banner outer end --> 
+      
+    </div>
+  </div>
+  <!-- top sec end --> 
+  
+  <!-- data start -->
+  
+  <div class="container ">
+    <div class="row "> 
+      <!-- left sec start -->
+      <div class="col-md-11 col-sm-11">
+        <div class="row"> 
+          <!-- business start -->
+          <div class="col-sm-16 business  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="50">
+            <div class="main-title-outer pull-left">
+              <div class="main-title">متميز</div>
+              <div class="span-outer"><span class="pull-it-left text-danger last-update"><span class="ion-android-data icon"></span>اخر تحديث: <?php echo e($item->updated_at); ?></span> </div>
+            </div>
+            <div class="row">
+              <div class="col-md-11 col-sm-16">
+                <div class="row">
+                <?php if($news_load->count()): ?>
+                <?php $i = 1; ?>
+                <?php foreach($news_load as $item): ?>
+                <?php if($item->advantage == 2): ?>
+                  <div class="col-md-8 col-sm-9 col-xs-16">
+                  <?php foreach($item->basic_photo as $image): ?>
+                    <?php
+                      $date = $item->created_at;
+                      $date = date('Y-m-d', strtotime($date));
+                    ?>
+                    <div class="topic"> <a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>"><img class="img-thumbnail" src="/<?php echo e($image->medium); ?>" width="600" height="398" alt="<?php echo e($item->title); ?>"/>
+                  <?php endforeach; ?>
+                      <h3><?php echo e($item->title); ?></h3>
+                      <div class="text-danger sub-info-bordered">
+                        <div class="time"><span class="ion-android-data icon"></span><?php echo e($item->created_at); ?></div>
+                        
+                        <div class="stars">انفراد</div>
+                      </div>
+                      </a>
+                      <p><?php echo e($item->summary); ?></p>
+                    </div>
+                  </div>
+                  <?php $i = $i + 1;?>
+                  <?php endif; ?>
+                  <?php  if ($i > 1){ break; } ?>
+                  <?php endforeach; ?>
+                  <?php endif; ?>
+                  <div class="col-md-8 col-sm-7 col-xs-16">
+                    <ul class="list-unstyled">
+                    <?php if($news_load->count()): ?>
+                    <?php $i = 1; ?>
+                    <?php foreach($news_load as $item): ?>
+                    <?php if($item->advantage == 1): ?>
+                      <?php
+                        $date = $item->created_at;
+                        $date = date('Y-m-d', strtotime($date));
+                      ?>
+                      <li> <a href="/story/<?php echo e($date); ?>/<?php echo e($item->link); ?>">
+                        <div class="row">
+                        <?php foreach($item->basic_photo as $image): ?>
+                          <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="/<?php echo e($image->small); ?>" width="76" height="76" alt="<?php echo e($item->title); ?>"/> </div>
+                        <?php endforeach; ?>
+                          <div class="col-sm-16 col-md-16 col-lg-11">
+                            <h4><?php echo e($item->title); ?></h4>
+                            <div class="text-danger sub-info">
+                              <div class="time"><span class="ion-android-data icon"></span><?php echo e($item->created_at); ?></div>
+                              
+                              <div class="stars">تغطية</div>
+                            </div>
+                          </div>
+                        </div>
+                        </a> </li>
+                      <?php $i = $i + 1;?>
+                  <?php endif; ?>
+                  <?php  if ($i > 4){ break; } ?>
+                  <?php endforeach; ?>
+                  <?php endif; ?>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-16 hidden-sm hidden-xs  left-bordered">
+                <div id="vid-thumbs" class="owl-carousel">
+                  
+                  <?php if($news_load->count()): ?>
+                  <div class="item">
+
+                <?php $i = 1; ?>
+                <?php foreach($news_load as $item): ?>
+                <?php if($item->advantage == 3): ?>
+                    <div class="vid-thumb-outer">
+                    <?php if($i == 1): ?>
+                    <?php if($item->valbums->count()): ?>
+                    <?php foreach($item->valbums as $valbum): ?>
+                    <?php if($valbums_videos->count()): ?>
+                    <?php foreach($valbums_videos as $video): ?>
+                    <?php if($valbum->id == $video->news_video_album_id): ?>
+                      <div class="vid-thumb"><a class="popup-youtube" href="<?php echo e($video->video); ?>">
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                        <?php foreach($item->basic_photo as $image): ?>
+                        <div class="vid-box"><span class="ion-ios7-film"></span><img class="img-thumbnail img-responsive" src="/<?php echo e($image->thumbnail); ?>" width="250" height="143" alt=""/> </div>
+                        <?php endforeach; ?>
+                        <h4><?php echo e($item->title); ?></h4>
+                        </a> </div>
+                    <?php endif; ?>
+                    <?php if($i == 2): ?>
+                    <?php if($item->valbums->count()): ?>
+                    <?php foreach($item->valbums as $valbum): ?>
+                    <?php if($valbums_videos->count()): ?>
+                    <?php foreach($valbums_videos as $video): ?>
+                    <?php if($valbum->id == $video->news_video_album_id): ?>
+                      <div class="vid-thumb"><a class="popup-youtube" href="<?php echo e($video->video); ?>">
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach($item->basic_photo as $image): ?>
+                        <div class="vid-box"><span class="ion-ios7-film"></span><img class="img-thumbnail img-responsive" src="/<?php echo e($image->thumbnail); ?>" width="250" height="143" alt=""/> </div>
+                        <?php endforeach; ?>
+                        <h4><?php echo e($item->title); ?></h4>
+                        </a> </div>
+                    <?php endif; ?>
+                    </div>
+                      <?php $i = $i + 1;?>
+                  <?php endif; ?>
+                  <?php endforeach; ?>
+                  <?php endif; ?>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <!-- business end --> 
+          
+          <!-- Science & Travel start -->
+          <div class="col-sm-16">
+            
+            <?php $i = 1; ?>
+            <?php if($sections->count()): ?>
+            <?php foreach($sections as $mysec): ?>
+            <?php $j = 1; ?>
+            <?php if($i % 2 != 0): ?>
+            <div class="row">
+              <div class="col-xs-16 col-sm-8  wow fadeInLeft animated science" data-wow-delay="0.5s" data-wow-offset="130">
+                <div class="main-title-outer pull-left">
+                <?php
+                  $path = str_replace(' ', '-', $mysec->name);
+                ?>
+                  <a href="/section/<?php echo e($path); ?>"><div class="main-title"><?php echo e($mysec->name); ?></div></a>
+                </div>
+                <div class="row">
+                
+                <?php foreach($news_related_sections as $sec_news): ?>
+                <?php if($mysec->id == $sec_news->section): ?>
+                <?php if($j == 1): ?>
+                  <?php
+                      $date = '';
+                      $date = $sec_news->created_at;
+                      $date = date('Y-m-d', strtotime($date));
+                  ?>
+                  <div class="topic col-sm-16"> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>"><img class=" img-thumbnail" src="/<?php echo e($sec_news->thumbnail); ?>" width="600" height="227" alt=""/>
+                    <h3> <?php echo e($sec_news->title); ?></h3>
+                    <div class="text-danger sub-info-bordered ">
+                      <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                          </div>
+                    </a>
+                    <?php
+                                                    $limit = 290;
+                                                    $subject = $sec_news->subject;
+                                                        if (strlen($subject) > $limit)
+                                                          $subject = substr($subject, 0, strrpos(substr($subject, 0, $limit), ' ')) . '...';
+                                                ?>
+                    <p><?php echo $subject; ?></p>
+                  </div>
+                <?php elseif($j > 1): ?>
+                  <div class="col-sm-16">
+                    <ul class="list-unstyled  top-bordered ex-top-padding">
+                    <?php if($j == 2): ?>
+                      <?php
+                          $date = '';
+                          $date = $sec_news->created_at;
+                          $date = date('Y-m-d', strtotime($date));
+                      ?>
+
+                      <li> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="/<?php echo e($sec_news->small); ?>" class="img-thumbnail pull-left"> </div>
+                          <div class="col-lg-13 col-md-12">
+                            <h4><?php echo e($sec_news->title); ?></h4>
+                            <div class="text-danger sub-info">
+                              <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                                          </div>
+                          </div>
+                        </div>
+                        </a> </li>
+                    <?php endif; ?>
+                    <?php if($j == 3): ?>
+                      <?php
+                          $date = '';
+                          $date = $sec_news->created_at;
+                          $date = date('Y-m-d', strtotime($date));
+                      ?>
+                      <li> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="/<?php echo e($sec_news->small); ?>" class="img-thumbnail pull-left"> </div>
+                          <div class="col-lg-13 col-md-12">
+                            <h4><?php echo e($sec_news->title); ?></h4>
+                            <div class="text-danger sub-info">
+                              <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                                          </div>
+                          </div>
+                        </div>
+                        </a> </li>
+                    <?php endif; ?>
+                    </ul>
+                  </div>
+                <?php endif; ?>
+                  <?php $j = $j + 1; ?>
+                  <?php endif; ?>
+                  <?php endforeach; ?>
+                  
+                </div>
+              </div>
+            <?php endif; ?>
+            <?php if($i % 2 == 0): ?>
+              <div class="col-sm-8 col-xs-16 wow fadeInRight animated" data-wow-delay="0.5s" data-wow-offset="130">
+                <div class="main-title-outer pull-left">
+                  <?php
+                  $path = str_replace(' ', '-', $mysec->name);
+                ?>
+                  <a href="/section/<?php echo e($path); ?>"><div class="main-title"><?php echo e($mysec->name); ?></div></a>
+                </div>
+                <div class="row left-bordered">
+                <?php $j = 1; ?>
+                  <?php foreach($news_related_sections as $sec_news): ?>
+                <?php if($mysec->id == $sec_news->section): ?>
+                <?php if($j == 1): ?>
+                  <?php
+                          $date = '';
+                          $date = $sec_news->created_at;
+                          $date = date('Y-m-d', strtotime($date));
+                      ?>
+
+                  <div class="topic col-sm-16"> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>"><img class=" img-thumbnail" src="/<?php echo e($sec_news->thumbnail); ?>" width="600" height="227" alt=""/>
+                    <h3> <?php echo e($sec_news->title); ?></h3>
+                    <div class="text-danger sub-info-bordered ">
+                      <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                          </div>
+                    </a>
+                    <?php
+                                                    $limit = 290;
+                                                    $subject = $sec_news->subject;
+                                                        if (strlen($subject) > $limit)
+                                                          $subject = substr($subject, 0, strrpos(substr($subject, 0, $limit), ' ')) . '...';
+                                                ?>
+                    <p><?php echo $subject; ?></p>
+                  </div>
+                <?php elseif($j > 1): ?>
+                  <div class="col-sm-16">
+                    <ul class="list-unstyled  top-bordered ex-top-padding">
+                    <?php if($j == 2): ?>
+                      <?php
+                          $date = '';
+                          $date = $sec_news->created_at;
+                          $date = date('Y-m-d', strtotime($date));
+                      ?>
+                      <li> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="/<?php echo e($sec_news->small); ?>" class="img-thumbnail pull-left"> </div>
+                          <div class="col-lg-13 col-md-12">
+                            <h4><?php echo e($sec_news->title); ?></h4>
+                            <div class="text-danger sub-info">
+                              <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                                          </div>
+                          </div>
+                        </div>
+                        </a> </li>
+                    <?php endif; ?>
+                    <?php if($j == 3): ?>
+                    <?php
+                          $date = '';
+                          $date = $sec_news->created_at;
+                          $date = date('Y-m-d', strtotime($date));
+                      ?>
+                      <li> <a href="/story/<?php echo e($date); ?>/<?php echo e($sec_news->link); ?>">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="/<?php echo e($sec_news->small); ?>" class="img-thumbnail pull-left"> </div>
+                          <div class="col-lg-13 col-md-12">
+                            <h4><?php echo e($sec_news->title); ?></h4>
+                            <div class="text-danger sub-info">
+                              <div class="time"><span class="ion-android-data icon"></span><?php echo e($sec_news->created_at); ?></div>
+                                                          </div>
+                          </div>
+                        </div>
+                        </a> </li>
+                    <?php endif; ?>
+                    </ul>
+                  </div>
+                <?php endif; ?>
+                  <?php $j = $j + 1; ?>
+                  <?php endif; ?>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php $i = $i +1; ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+            <hr>
+          </div>
+          <!-- Scince & Travel end --> 
+          <!-- lifestyle start-->
+          <?php if($last_news->count()): ?>
+          <div class="col-sm-16 wow fadeInUp animated " data-wow-delay="0.5s" data-wow-offset="100">
+            <div class="main-title-outer pull-left">
+              <div class="main-title">احدث الاخبار</div>
+              <?php foreach($last_news as $view): ?>
+              <div class="span-outer"><span class="pull-it-left text-danger last-update"><span class="ion-android-data icon"></span>اخر تحديث: <?php echo e($view->updated_at); ?></span> </div>
+              <?php break; ?>
+              <?php endforeach; ?>
+            </div>
+            <div class="row">
+              <div id="owl-lifestyle" class="owl-carousel owl-theme lifestyle pull-left">
+                <?php foreach($last_news as $view): ?>
+                <?php foreach($view->basic_photo as $image): ?>
+                <?php
+                      $date = $view->created_at;
+                      $date = date('Y-m-d', strtotime($date));
+                    ?>
+                <div class="item topic"> <a href="/story/<?php echo e($date); ?>/<?php echo e($view->link); ?>"> <img class="img-thumbnail" src="/<?php echo e($image->thumbnail); ?>" width="300" height="132" alt="<?php echo e($view->title); ?>"/>
+                  <h4><?php echo e($view->title); ?></h4>
+                  <div class="text-danger sub-info-bordered remove-borders">
+                    <div class="time"><span class="ion-android-data icon"></span><?php echo e($view->created_at); ?></div>
+                                      </div>
+                  </a> </div>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <?php endif; ?>
+          <!-- lifestyle end --> 
+          
+          <!--wide ad start-->
+          <?php if($adv->count()): ?>
+            <?php foreach($adv as $view): ?>
+            <?php if($view->position == 3): ?>
+            <?php foreach($view->images as $myimage): ?>
+          <div class="col-sm-16 wow fadeInDown animated " data-wow-delay="0.5s" data-wow-offset="25"><img class="img-responsive" src="/<?php echo e($myimage->large); ?>" width="728" height="90" alt=""/></div>
+          <!--wide ad end--> 
+          <?php endforeach; ?>
+          <?php endif; ?>
+          <?php endforeach; ?>
+          <?php endif; ?>
+          
+        </div>
+      <!-- left sec end -->
+      <!-- right sec start -->
+      <?php echo $__env->make('frontend.blocks.rightsidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      <!-- right sec end --> 
+    </div>
+  </div>
+  <!-- data end --> 
+
+<!-- wrapper end --> 
+  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer-scripts'); ?>
+  <!-- jQuery --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.min.js')); ?>"></script> 
+<!--jQuery easing--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.easing.1.3.js')); ?>"></script> 
+<!-- bootstrab js --> 
+<script src="<?php echo e(asset('assets/frontend/js/bootstrap.js')); ?>"></script> 
+<!--style switcher--> 
+<script src="<?php echo e(asset('assets/frontend/js/style-switcher.js')); ?>"></script> <!--wow animation--> 
+<script src="<?php echo e(asset('assets/frontend/js/wow.min.js')); ?>"></script> 
+<!-- time and date --> 
+<script src="<?php echo e(asset('assets/frontend/js/moment.min.js')); ?>"></script> 
+<!--news ticker--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.ticker.js')); ?>"></script> 
+<!-- owl carousel --> 
+<script src="<?php echo e(asset('assets/frontend/js/owl.carousel.js')); ?>"></script> 
+<!-- magnific popup --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.magnific-popup.js')); ?>"></script> 
+<!-- weather --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.simpleWeather.min.js')); ?>"></script> 
+<!-- calendar--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.pickmeup.js')); ?>"></script> 
+<!-- go to top --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.scrollUp.js')); ?>"></script> 
+<!-- scroll bar --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.nicescroll.js')); ?>"></script> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.nicescroll.plus.js')); ?>"></script> 
+<!--masonry--> 
+<script src="<?php echo e(asset('assets/frontend/js/masonry.pkgd.js')); ?>"></script> 
+<!--media queries to js--> 
+<script src="<?php echo e(asset('assets/frontend/js/enquire.js')); ?>"></script> 
+<!--custom functions--> 
+<script src="<?php echo e(asset('assets/frontend/js/custom-fun.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/frontend/js/custom_js.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

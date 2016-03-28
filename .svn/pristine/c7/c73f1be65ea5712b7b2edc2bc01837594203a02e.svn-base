@@ -1,0 +1,113 @@
+<?php $__env->startSection('header-content'); ?>
+<link href="<?php echo e(asset('assets/frontend/css/bootstrap.min.css')); ?>" rel="stylesheet">
+<!-- google font -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+<!-- ionicons font -->
+<link href="<?php echo e(asset('assets/frontend/css/ionicons.min.css')); ?>" rel="stylesheet">
+<!-- animation styles -->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/animate.css')); ?>" />
+<!-- custom styles -->
+<link href="<?php echo e(asset('assets/frontend/css/custom-red.css')); ?>" rel="stylesheet" id="style">
+<!-- owl carousel styles-->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/owl.carousel.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/owl.transitions.css')); ?>">
+<!-- magnific popup styles -->
+<link rel="stylesheet" href="<?php echo e(asset('assets/frontend/css/magnific-popup.css')); ?>">
+<style type="text/css">
+  div.col-sm-5.hidden-xs.right-sec{
+    margin-top: -45px !important;
+  }
+</style>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+  <div class="container"> 
+    
+    <!-- bage header start -->
+    <div class="page-header">
+      <h1><?php echo e($path); ?></h1>
+      <ol class="breadcrumb">
+        <li><a href="/home">الرئيسية</a></li>
+        <li class="active"><?php echo e($path); ?></li>
+      </ol>
+    </div>
+    
+    <!-- bage header end --> 
+    
+  </div>
+  
+  <!-- data start -->
+  <section>
+    <div class="container ">
+      <div class="row "> 
+        <!-- left sec start -->
+        <div class="col-md-11 col-sm-11">
+          <div class="row">
+          <?php foreach($get_news_features as $item): ?>
+            <div class="sec-topic col-sm-16 col-md-8 wow fadeInDown animated " data-wow-delay="0.5s"> <a href="/story/<?php echo e($item->link); ?>"><img width="1000" height="606" alt="<?php echo e($item->title); ?>" src="/<?php echo e($item->large); ?>" class="img-thumbnail">
+              <div class="sec-info">
+                <h3><?php echo e($item->title); ?></h3>
+                <div class="text-danger sub-info-bordered">
+                  <div class="time"><span class="ion-android-data icon"></span><?php echo e($item->created_at); ?></div>
+                </div>
+              </div>
+              </a>
+              <?php
+              $limit = 250;
+                                $subject = $item->subject;
+                                    if (strlen($subject) > $limit)
+                                      $subject = substr($subject, 0, strrpos(substr($subject, 0, $limit), ' ')) . '...';
+                                ?>
+              <p><?php echo $subject; ?></p>
+            </div>
+            <?php endforeach; ?>
+            
+            
+          </div>
+        </div>
+        <!-- left sec end --> 
+        
+        <!-- right sec start -->
+          <?php echo $__env->make('frontend.blocks.rightsidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+    </div>
+  </section>
+  <!-- data end --> 
+
+    <?php $__env->stopSection(); ?>
+<?php $__env->startSection('footer-scripts'); ?>
+  <!-- jQuery --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.min.js')); ?>"></script> 
+<!--jQuery easing--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.easing.1.3.js')); ?>"></script> 
+<!-- bootstrab js --> 
+<script src="<?php echo e(asset('assets/frontend/js/bootstrap.js')); ?>"></script> 
+<!--style switcher--> 
+<script src="<?php echo e(asset('assets/frontend/js/style-switcher.js')); ?>"></script> <!--wow animation--> 
+<script src="<?php echo e(asset('assets/frontend/js/wow.min.js')); ?>"></script> 
+<!-- time and date --> 
+<script src="<?php echo e(asset('assets/frontend/js/moment.min.js')); ?>"></script> 
+<!--news ticker--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.ticker.js')); ?>"></script> 
+<!-- owl carousel --> 
+<script src="<?php echo e(asset('assets/frontend/js/owl.carousel.js')); ?>"></script> 
+<!-- magnific popup --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.magnific-popup.js')); ?>"></script> 
+<!-- weather --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.simpleWeather.min.js')); ?>"></script> 
+<!-- calendar--> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.pickmeup.js')); ?>"></script> 
+<!-- go to top --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.scrollUp.js')); ?>"></script> 
+<!-- scroll bar --> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.nicescroll.js')); ?>"></script> 
+<script src="<?php echo e(asset('assets/frontend/js/jquery.nicescroll.plus.js')); ?>"></script> 
+<!--masonry--> 
+<script src="<?php echo e(asset('assets/frontend/js/masonry.pkgd.js')); ?>"></script> 
+<!--media queries to js--> 
+<script src="<?php echo e(asset('assets/frontend/js/enquire.js')); ?>"></script> 
+<!--custom functions--> 
+<script src="<?php echo e(asset('assets/frontend/js/custom-fun.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
