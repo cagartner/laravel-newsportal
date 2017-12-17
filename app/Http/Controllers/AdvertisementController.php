@@ -125,9 +125,9 @@ class AdvertisementController extends Controller
         $last_adv = Advertisement::orderBy('id', 'desc')->first();
         $file = $request->file('basic_photo');
         if (!empty($file)){
-                if (empty($file)){
+                /*if (empty($file)){
                     break;
-                }
+                }*/
                 $rules = array(
                    'image' => 'required|mimes:png,gif,jpeg,jpg|max:1000'
                 );
@@ -224,9 +224,9 @@ class AdvertisementController extends Controller
         $file = $request->file('basic_photo');
         if (!empty($file)){
                 AdvertisementImages::where('advertisement_id', '=', $id)->delete();
-                if (empty($file)){
+                /*if (empty($file)){
                     break;
-                }
+                }*/
                 $rules = array(
                    'image' => 'required|mimes:png,gif,jpeg,jpg|max:1000'
                 );

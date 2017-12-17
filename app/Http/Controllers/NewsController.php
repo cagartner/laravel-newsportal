@@ -296,9 +296,9 @@ class NewsController extends Controller
         }
         $file = $request->file('basic_photo');
         if (!empty($file)){
-            if (empty($file)){
+            /*if (empty($file)){
                 break;
-            }
+            }*/
                 $destinationPath = 'img/news/basic_photo';
                 $filename = $file->getClientOriginalName();
                   $mime_type = $file->getMimeType();
@@ -614,9 +614,9 @@ class NewsController extends Controller
         
         $file = $request->file('basic_photo');
         if (!empty($file)){
-            if (empty($file)){
+            /*if (empty($file)){
                 break;
-            }
+            }*/
             NewsBasicPhoto::where('news_id', '=', $mynewid)->delete();
             $rules = array(
                'image' => 'mimes:png,gif,jpeg,jpg|max:1000'

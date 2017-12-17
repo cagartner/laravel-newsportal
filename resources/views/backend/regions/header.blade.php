@@ -2,10 +2,10 @@
 @inject('settings', 'App\Http\Controllers\HomeController')
        
 <header class="header">
-        <link rel="shortcut icon" type="image/x-icon" href="/{{$settings->getsettings()->favicon}}"/>
+        <link rel="shortcut icon" type="image/x-icon" href="/{{$settings->getsettings()->favicon or ''}}"/>
         <a href="/admin/dashboard" class="logo">
             <!-- Add the class icon to your logo image or logo icon to add the margining -->
-            <img src="/{{$settings->getsettings()->logo}}" alt="{{$settings->getsettings()->name}}"></a>
+            <img src="/{{$settings->getsettings()->logo or ''}}" alt="{{$settings->getsettings()->name or ''}}"></a>
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
             <div>

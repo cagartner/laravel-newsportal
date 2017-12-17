@@ -10,8 +10,8 @@
           <div class="col-sm-8 subscribe-info wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
             <div class="row">
               <div class="col-sm-16">
-                  <div class="f-title">رئيس التحرير: {{$settings->getsettings()->editor}}</div>
-                  <p>{{$settings->getsettings()->description}}</p>
+                  <div class="f-title">رئيس التحرير: {{$settings->getsettings()->editor or ''}}</div>
+                  <p>{{$settings->getsettings()->description or ''}}</p>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
           <div class="col-sm-16">
             <div class="row">
               <div class="col-sm-10 col-xs-16 f-nav wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10">
-                 جميع الحقوق محفوظة &copy; {{$settings->getsettings()->name}} 2015
+                 جميع الحقوق محفوظة &copy; {{$settings->getsettings()->name or ''}} {{ date('Y') }}
               </div>
               <div class="col-sm-6 col-xs-16 copyrights text-right wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10"><img src="/img/innoflame_logo/innoflame.png"> Powered by INNOFLAME</div>
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     @inject('settings', 'App\Http\Controllers\HomeController')
-    <title>{{$settings->getsettings()->name}}</title> 
+    <title>{{$settings->getsettings()->name or ''}}</title> 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -44,9 +44,9 @@ class SettingsController extends Controller
         $settings->editor = $request->editor;
         $file = $request->file('basic_photo');
         if (!empty($file)){
-            if (empty($file)){
+            /*if (empty($file)){
                 break;
-            }
+            }*/
             $rules = array(
                'image' => 'mimes:png,gif,jpeg,jpg|max:1000'
            );
@@ -75,9 +75,9 @@ class SettingsController extends Controller
 
          $file = $request->file('favicon');
         if (!empty($file)){
-            if (empty($file)){
+            /*if (empty($file)){
                 break;
-            }
+            }*/
             $rules = array(
                'image' => 'mimes:png,gif,jpeg,jpg|max:1000'
            );
