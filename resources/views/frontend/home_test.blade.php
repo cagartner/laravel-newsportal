@@ -200,7 +200,7 @@
           <div class="col-sm-16 business  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="50">
             <div class="main-title-outer pull-left">
               <div class="main-title">متميز</div>
-              <div class="span-outer"><span class="pull-it-left text-danger last-update"><span class="ion-android-data icon"></span>اخر تحديث: {{$item->updated_at}}</span> </div>
+              <div class="span-outer"><span class="pull-it-left text-danger last-update"><span class="ion-android-data icon"></span>اخر تحديث: {{$item->updated_at or '-'}}</span> </div>
             </div>
             <div class="row">
               <div class="col-md-11 col-sm-16">

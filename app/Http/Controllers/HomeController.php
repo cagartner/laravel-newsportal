@@ -139,7 +139,7 @@ class HomeController extends Controller
         $messages = ContactUs::count();
         $old_messages = ContactUs::where('created_at', '<', $yesterday)->count();
         $opinion = Opinion::count();
-        $total_options = DB::select('select count(counter) as options, sum(votes) as votes from opinion_options');
+        $total_options = DB::select('select count(counter) as options, sum(option) as votes from opinion_options');
         $pages = Page::count();
         $news_most_views = News::with('sections')->orderBy('views', 'DESC')->take(15)->get();
         $count_news = DB::select('select mysec.section, count(news.id) as count_sec_news from news LEFT JOIN news_sections as mysec ON (mysec.news_id = news.id) where mysec.status = 1 GROUP BY mysec.section');

@@ -30,7 +30,7 @@
     <!-- header start -->
     <div class="container header">
       <div class="row">
-        <div class="col-sm-5 col-md-5 wow fadeInUpLeft animated"><a class="navbar-brand" href="/home"><img src="/{{$settings->getsettings()->logo}}" width="468" height="60" alt=""/></a></div>
+        <div class="col-sm-5 col-md-5 wow fadeInUpLeft animated"><a class="navbar-brand" href="/home"><img src="/{{$settings->getsettings()->logo or ''}}" width="468" height="60" alt=""/></a></div>
         <div class="col-sm-11 col-md-11 hidden-xs text-left">
           @if ($advs->getadvs()->count())
             @foreach ($advs->getadvs() as $view)

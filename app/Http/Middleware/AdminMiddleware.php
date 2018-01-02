@@ -23,6 +23,10 @@ class AdminMiddleware
         {
             return redirect('admin/login');
         }
+		if ($request->user()->group_id != 1)
+        {
+            return redirect('admin/login');
+        }
         return $next($request);
     }
 }

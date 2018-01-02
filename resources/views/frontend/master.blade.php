@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="{{$settings->getsettings()->description}}">
+<meta name="description" content="{{$settings->getsettings()->description or ''}}">
 <?php
 	$keywords_str = '';
-	$keywords = $settings->getsettings()->keywords;
+	$keywords = isset($settings->getsettings()->keywords)? $settings->getsettings()->keywords : '';
 	$keywords = explode(' ', $keywords);
 	foreach ($keywords as $key => $value) {
 		$keywords_str .= $value . ',';
@@ -26,9 +26,9 @@
 @endif
 <meta name="author" content="INNOFLAME INFORMATION TECHNOLOGY">
 
-<title>{{$settings->getsettings()->name}}</title>
+<title>{{$settings->getsettings()->name or ''}}</title>
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/{{$settings->getsettings()->favicon}}" type="image/x-icon">
+<link rel="icon" href="/{{$settings->getsettings()->favicon or ''}}" type="image/x-icon">
     @if(Lang::getLocale() == 'ar')
         <link href="{{ asset('assets/frontend/css/custom-rtl.css') }}" rel="stylesheet" type="text/css" id="colorscheme" />
     @endif
