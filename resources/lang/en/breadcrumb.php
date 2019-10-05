@@ -11,9 +11,9 @@ return [
     |
     */
 
-    'dashboard'  => 'لوحة التحكم',
-    'banners'    => 'البنرات',
-    'image'      => 'الصورة',
-    'add_banner' => 'إضافة بنر',
+    'dashboard'  => 'Dashboard',
+    'banners'    => 'Banners',
+    'image'      => 'Image',
+    'add_banner' => 'Add banner',
 
 ];
